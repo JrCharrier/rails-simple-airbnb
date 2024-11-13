@@ -1,0 +1,17 @@
+<%= simple_form_for(flat) do |f| %>
+ <div class="mb-3">
+    <%= f.input :name %>
+  </div>
+  <div class="mb-3">
+    <%= f.input :address %>
+  </div>
+  <div class="mb-3">
+   <%= f.input :price_per_night %>
+  </div>
+  <div class="mb-3">
+    <%= f.input :number_of_guests %>
+  </div>
+  <div class="mb-3">
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

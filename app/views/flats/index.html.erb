@@ -1,0 +1,39 @@
+<%= render "navbar" %>
+
+<div class="container my-5">
+  <!-- Titre stylisé inspiré d'Airbnb -->
+  <h1 class="text-center mb-5 display-4 fw-bold" style="color: #FF385C;">Explore Unique Places to Stay</h1>
+
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <% @flats.each do |flat| %>
+      <div class="col">
+        <!-- Card stylisée avec image et détails -->
+        <div class="card border-0 shadow-sm h-100">
+          <%# Placeholder image, remplacez `flat.image_url` si vous avez des images %>
+          <%= image_tag("https://www.parcdeslibertes.fr/wp-content/uploads/2024/06/logements-parisiens-explorez-les-7-meilleurs-airbnb-au-coeur-de-paris-pour-une-experience-inoubliable-scaled.jpg.webp" || "https://via.placeholder.com/400x300", class: "card-img-top rounded-top", alt: flat.name) %>
+
+          <div class="card-body d-flex flex-column">
+            <!-- Nom et description du flat -->
+            <h5 class="card-title">
+              <%= link_to flat.name, flat_path(flat), class: "text-decoration-none text-dark fw-bold" %>
+            </h5>
+            <p class="card-text text-muted small">
+              <%= flat.description.truncate(100) %>
+            </p>
+
+            <!-- Prix et lien vers la page du flat -->
+            <div class="d-flex justify-content-between align-items-center mt-auto">
+              <span class="fw-bold" style="color: #FF385C;"><%= flat.price_per_night %>€ / night</span>
+              <%= link_to "View Flat", flat_path(flat), class: "btn btn-outline-primary btn-sm rounded-pill" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Bouton Ajouter un nouveau flat stylisé -->
+  <div class="text-center mt-5">
+    <%= link_to "Add New Flat", new_flat_path, class: "btn btn-success btn-lg fw-bold px-5 rounded-pill", style: "background-color: #FF385C; border: none;" %>
+  </div>
+</div>

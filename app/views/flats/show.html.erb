@@ -1,0 +1,39 @@
+<%= render "navbar" %>
+
+<div class="container my-5">
+  <!-- Titre de la page avec style -->
+  <h2 class="display-4 text-center fw-bold text-danger mb-4"><%= @flat.name %></h2>
+
+  <!-- Card pour le détail du flat avec une disposition en deux colonnes -->
+  <div class="card shadow-lg border-0 rounded-4 mb-4">
+    <div class="row g-0">
+      <!-- Colonne gauche : Information du flat -->
+      <div class="col-md-8 p-4">
+        <div class="card-body">
+          <!-- Description du flat -->
+          <h5 class="card-title text-primary">Description:</h5>
+          <p class="card-text text-muted"><%= @flat.description %></p>
+
+          <!-- Prix par nuit -->
+          <h5 class="card-title text-primary">Price per Night:</h5>
+          <p class="card-text fs-4 fw-bold text-danger"><%= @flat.price_per_night %>€</p>
+
+          <!-- Nombre de personnes -->
+          <h5 class="card-title text-primary">Number of Guests:</h5>
+          <p class="card-text"><%= @flat.number_of_guests %> guests</p>
+
+          <!-- Action buttons: Edit and Back -->
+          <div class="mt-4">
+            <%= link_to "Back", flats_path, class: "btn btn-custom-outline-secondary btn-lg" %>
+            <%= link_to "Edit", edit_flat_path(@flat), class: "btn btn-custom-warning btn-lg me-3" %>
+          </div>
+        </div>
+      </div>
+
+      <!-- Colonne droite : Image du flat -->
+      <div class="col-md-4 d-flex justify-content-center align-items-center">
+        <%= image_tag("https://www.parcdeslibertes.fr/wp-content/uploads/2024/06/logements-parisiens-explorez-les-7-meilleurs-airbnb-au-coeur-de-paris-pour-une-experience-inoubliable-scaled.jpg.webp" || "https://via.placeholder.com/400x300", class: "img-fluid rounded me-4", alt: @flat.name) %>
+      </div>
+    </div>
+  </div>
+</div>
